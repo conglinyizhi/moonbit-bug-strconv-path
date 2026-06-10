@@ -1,0 +1,7 @@
+import {
+  "moonbitlang/async/http",
+  "moonbitlang/core/strconv" @strconv,
+}
+options(
+  "is-main": true,
+)
