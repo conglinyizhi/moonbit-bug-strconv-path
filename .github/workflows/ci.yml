@@ -17,16 +17,17 @@ jobs:
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
 
+      - name: Update registry index
+        run: moon update
+
       - name: moon check --target native (should pass)
         run: |
           echo "=== moon version ==="
           moon version
           echo "=== moon check --target native ==="
           moon check --target native
-        working-directory: ./
 
       - name: moon build --target native (expected to FAIL — strconv path conflict)
         run: |
           echo "=== moon build --target native (expected to fail) ==="
           moon build --target native 2>&1 || echo "BUILD_FAILED_AS_EXPECTED"
-        working-directory: ./
